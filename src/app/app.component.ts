@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, WritableSignal} from '@angular/core';
+import {BooleanInput} from "@angular/cdk/coercion";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'loan-portal';
+  opened: BooleanInput | WritableSignal<BooleanInput>;
 }
