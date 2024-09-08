@@ -1,0 +1,82 @@
+.full-width {
+  width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-button {
+  margin-top: 10px;
+}
+
+mat-card {
+  max-width: 400px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+mat-spinner {
+  margin-right: 8px;
+}
+
+.snackbar-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336;
+  color: white;
+}
+
+mat-card-title {
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-side {
+  flex: 1;
+  background: #FF9540;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 175px;
+}
+
+.left-side h2 {
+  font-family: Georgia, Times, serif;
+}
+
+.left-side .content {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.vertical-line {
+  width: 1px;
+  background-color: #ddd;
+  height: 100%;
+  margin-left: 50px;
+}
+
+.right-side {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

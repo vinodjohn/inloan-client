@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="left-side">
+    <div class="content">
+      <h2><i>Welcome</i> to Inbank!</h2>
+      <p style="color: white">Discover the smart loan offers tailored for you. Enjoy a seamless experience with our
+        platform.</p>
+    </div>
+  </div>
+  <div class="vertical-line"></div>
+  <div class="right-side">
+    <mat-card>
+      <mat-card-title class="action-buttons">Sign in</mat-card-title>
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="signInForm">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>ID code</mat-label>
+            <input formControlName="idCode" matInput placeholder="ID code" required type="text">
+            <mat-error *ngIf="signInForm.get('idCode')?.hasError('required')">ID Code is required</mat-error>
+            <mat-error *ngIf="signInForm.get('idCode')?.hasError('pattern')">Invalid ID code</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" matInput
+                   placeholder="Enter your password" required>
+            <button (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword" mat-icon-button
+                    matSuffix>
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="signInForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="signInForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters long.
+            </mat-error>
+          </mat-form-field>
+
+          <div class="action-buttons">
+            <button [disabled]="loading" class="full-width" color="primary" mat-flat-button type="submit">
+              <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+              Sign In
+            </button>
+            <div class="link-button">
+              Don't have an account?
+              <button color="primary" mat-button routerLink="/sign-up" type="button">Sign up</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

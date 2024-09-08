@@ -1,0 +1,94 @@
+<div class="container-xl">
+  <div class="jumbotron">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h3 class="jumbotron-heading">Loan Application Info</h3>
+    </div>
+
+    <div class="loan-application-info-container">
+      <div class="loan-application-info-item">
+        <strong>Loan application ID:</strong> {{ loanApplication?.id }}
+      </div>
+      <div class="loan-application-info-item">
+        <strong>Requested loan amount:</strong> {{ loanApplication?.requestAmount }} €
+      </div>
+      <div class="loan-application-info-item">
+        <strong>Requested loan period:</strong> {{ loanApplication?.requestPeriod }} months
+      </div>
+      <div class="loan-application-info-item">
+        <strong>Date:</strong> {{ loanApplication?.createdDate | date }}
+      </div>
+    </div>
+
+    <h5 class="jumbotron-heading" style="margin-top: 50px">Initial loan offer</h5>
+    <div *ngIf="data.length == 0" class="message-container">
+      <mat-card class="message-card">
+        <mat-card-content>
+          <p>No loan offers found for this application.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div [hidden]="data.length == 0" class="contract-container mat-elevation-z8">
+      <div *ngIf="isLoadingResults || isRateLimitReached" class="contract-loading-shade">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div *ngIf="isRateLimitReached" class="contract-rate-limit-reached">
+          Rate limit has been reached. Please try again later.
+        </div>
+      </div>
+
+      <div class="contract-table-container">
+        <table [dataSource]="data" class="contract-table" mat-table
+               matSort matSortActive="createdDate" matSortDirection="asc" matSortDisableClear>
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Id</th>
+            <td *matCellDef="let row" class="truncate-cell" mat-cell>{{ row.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="creditScore">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Credit score</th>
+            <td *matCellDef="let row" class="truncate-cell"
+                mat-cell> {{ row.creditScore }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="loanAmount">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Loan amount</th>
+            <td *matCellDef="let row" mat-cell>{{ row.loanAmount }}</td> €
+          </ng-container>
+
+          <ng-container matColumnDef="minPeriod">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Minimum period (months)</th>
+            <td *matCellDef="let row" mat-cell>{{ row.minPeriod }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="maxPeriod">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Maximum period (months)</th>
+            <td *matCellDef="let row" mat-cell>{{ row.maxPeriod }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th *matHeaderCellDef class="created-date" disableClear mat-header-cell mat-sort-header>Created date</th>
+            <td *matCellDef="let row" class="created-date" mat-cell>{{ row.createdDate | date:'shortDate' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="loanOfferType">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Type</th>
+            <td *matCellDef="let row" mat-cell>{{ row.loanOfferType }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="loanOfferStatus">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
+            <td *matCellDef="let row" mat-cell>{{ row.loanOfferStatus }}</td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+      </div>
+
+      <mat-paginator [hidePageSize]="true" [length]="resultsLength"
+                     [pageSize]="displayPageSize"
+                     [showFirstLastButtons]="true"></mat-paginator>
+    </div>
+  </div>
+</div>

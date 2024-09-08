@@ -7,31 +7,33 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import {SignInComponent} from './sign-in/sign-in.component';
 import {MatToolbar, MatToolbarRow} from "@angular/material/toolbar";
 import {MatButton, MatButtonModule, MatIconButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {RouterModule, Routes} from "@angular/router";
-import {AppInterceptor, httpInterceptorProviders} from "./shared/interceptor/app.interceptor";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {httpInterceptorProviders} from "./shared/interceptor/app.interceptor";
+import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DashboardComponent} from './dashboard/dashboard.component';
-import { NewLoanComponent } from './new-loan/new-loan.component';
+import {NewLoanComponent} from './new-loan/new-loan.component';
 import {
   MatCell,
   MatCellDef,
   MatColumnDef,
   MatHeaderCell,
   MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {MatSort, MatSortHeader} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
-import { LoanDetailComponent } from './loan-detail/loan-detail.component';
+import {MatSort, MatSortHeader, MatSortModule} from "@angular/material/sort";
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {
   MatCard,
   MatCardActions,
@@ -50,23 +52,43 @@ import {
 } from "@angular/material/stepper";
 import {MatSlider, MatSliderModule} from "@angular/material/slider";
 import {MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {NgOptimizedImage} from "@angular/common";
+import {SignUpComponent} from './sign-up/sign-up.component';
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {LoanContractComponent} from './loan-contract/loan-contract.component';
+import {MatDivider} from "@angular/material/divider";
+import { LoanApplicationInfoComponent } from './loan-application-info/loan-application-info.component';
+import { LoanApplicationComponent } from './loan-application/loan-application.component';
 
 const appRoutes: Routes = [
   {
     path: '',
+    component: DashboardComponent
+  },
+  {
+    path: 'sign-in',
     component: SignInComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'sign-up',
+    component: SignUpComponent
   },
   {
     path: 'new-loan',
     component: NewLoanComponent
   },
   {
-    path: 'loan-details/:id',
-    component: LoanDetailComponent }
+    path: 'loan-contract/:id',
+    component: LoanContractComponent
+  },
+  {
+    path: 'loan-application',
+    component: LoanApplicationComponent
+  },
+  {
+    path: 'loan-application-info/:id',
+    component: LoanApplicationInfoComponent
+  }
 ];
 
 @NgModule({
@@ -75,7 +97,10 @@ const appRoutes: Routes = [
     SignInComponent,
     DashboardComponent,
     NewLoanComponent,
-    LoanDetailComponent
+    SignUpComponent,
+    LoanContractComponent,
+    LoanApplicationInfoComponent,
+    LoanApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +108,7 @@ const appRoutes: Routes = [
     MatToolbar,
     MatIconButton,
     MatIcon,
+    MatIconModule,
     MatButton,
     MatSidenavContainer,
     MatSidenav,
@@ -98,7 +124,6 @@ const appRoutes: Routes = [
     MatError,
     MatToolbarRow,
     MatSidenavContent,
-    BrowserModule,
     BrowserAnimationsModule,
     MatTable,
     MatColumnDef,
@@ -111,10 +136,12 @@ const appRoutes: Routes = [
     MatRow,
     MatHeaderRowDef,
     MatRowDef,
+    MatPaginatorModule,
     MatPaginator,
     MatCard,
     MatCardTitle,
     MatCardContent,
+    MatSortModule,
     MatSortHeader,
     MatStepper,
     MatStep,
@@ -129,12 +156,14 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardHeader,
     MatCardActions,
-    MatCardTitle,
     MatCardSubtitle,
     MatDialogTitle,
-    MatDialogContent
-
-
+    MatDialogContent,
+    NgOptimizedImage,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatDivider
   ],
   providers: [
     provideAnimationsAsync(),

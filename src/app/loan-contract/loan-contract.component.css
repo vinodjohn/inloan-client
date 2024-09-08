@@ -1,0 +1,39 @@
+.loan-contract-info-container {
+  margin-top: 2rem;
+  margin-left:1rem;
+}
+
+.loan-contract-info-item {
+  margin-top: 20px;
+}
+
+
+
+.jumbotron-heading h3 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+}
+
+th[mat-header-cell] {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #21093A;
+}
+
+.truncate-cell {
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.created-date {
+  padding-left: 20px;
+}
+
+.page-content {
+  margin-top: 30px;
+}

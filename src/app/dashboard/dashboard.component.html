@@ -1,0 +1,80 @@
+<div class="container-xl">
+  <div class="jumbotron">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h3 class="jumbotron-heading">My Contracts</h3>
+      <button color="primary" mat-flat-button routerLink="/new-loan">New Loan</button>
+    </div>
+
+    <div *ngIf="data.length == 0" class="message-container">
+      <mat-card class="message-card">
+        <mat-card-content>
+          <p>You do not have any contracts.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div [hidden]="data.length == 0" class="contract-container mat-elevation-z8">
+      <div *ngIf="isLoadingResults || isRateLimitReached" class="contract-loading-shade">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div *ngIf="isRateLimitReached" class="contract-rate-limit-reached">
+          Rate limit has been reached. Please try again later.
+        </div>
+      </div>
+
+      <div class="contract-table-container">
+        <table [dataSource]="data" class="contract-table" mat-table
+               matSort matSortActive="createdDate" matSortDirection="asc" matSortDisableClear>
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Id</th>
+            <td *matCellDef="let row" class="truncate-cell" mat-cell>{{ row.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="monthlyAmount">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Monthly amount</th>
+            <td *matCellDef="let row" class="truncate-cell"
+                mat-cell> {{ row.monthlyAmount }} €
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="period">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Period (months)</th>
+            <td *matCellDef="let row" mat-cell>{{ row.period }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th *matHeaderCellDef class="created-date" disableClear mat-header-cell mat-sort-header>Created date</th>
+            <td *matCellDef="let row" class="created-date" mat-cell>{{ row.createdDate | date:'shortDate' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="isActive">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
+            <td *matCellDef="let row" mat-cell>{{ row.isActive ? 'Active' : 'Inactive' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th *matHeaderCellDef mat-header-cell>Actions</th>
+            <td *matCellDef="let row" mat-cell>
+              <button (click)="onRowClicked(row)" aria-label="View contract" color="primary" mat-icon-button>
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+              <button *ngIf="row.isActive" aria-label="Delete contract" color="warn" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button *ngIf="!row.isActive" aria-label="Restore contract" color="accent"
+                      mat-icon-button>
+                <mat-icon>restore</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+      </div>
+
+      <mat-paginator [hidePageSize]="true" [length]="resultsLength"
+                     [pageSize]="displayPageSize"
+                     [showFirstLastButtons]="true"></mat-paginator>
+    </div>
+  </div>
+</div>

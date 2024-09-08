@@ -1,0 +1,99 @@
+<h1 class="mat-title-large" mat-dialog-title>New loan application</h1>
+<div mat-dialog-content>
+  <mat-stepper #stepper [linear]="true">
+    <mat-step [editable]="!isConfirmClicked" [stepControl]="loanAmountGroup" label="Select loan amount">
+      <form [formGroup]="loanAmountGroup">
+        <div class="new-loan-label-container">
+          <label class="new-loan-value-label">{{ amountSlider.value }}</label>
+          <label class="new-loan-name-label" id="new-loan-name-label">€</label>
+        </div>
+        <mat-slider [max]="maxAmount" [min]="minAmount" [step]="stepAmount" class="new-loan-margin">
+          <input #amountSlider formControlName="amountCtrl" matSliderThumb>
+        </mat-slider>
+        <div>
+          <button mat-flat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [editable]="!isConfirmClicked" [stepControl]="loanPeriodGroup" label="Choose loan period">
+      <form [formGroup]="loanPeriodGroup">
+        <div class="new-loan-label-container">
+          <label class="new-loan-value-label">{{ periodSlider.value }}</label>
+          <label class="new-loan-name-label" id="period">months</label>
+        </div>
+        <mat-slider [max]="maxPeriod" [min]="minPeriod" [step]="stepPeriod" class="new-loan-margin">
+          <input #periodSlider formControlName="periodCtrl" matSliderThumb>
+        </mat-slider>
+        <div>
+          <button mat-stroked-button matStepperPrevious>Back</button>
+          <button mat-flat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [editable]="!isConfirmClicked">
+      <ng-template matStepLabel>Confirm</ng-template>
+      <p>Please confirm the following application</p>
+      <br/>
+      <p><b>Loan amount:</b> {{ loanAmountGroup.getRawValue().amountCtrl }} €</p>
+      <p><b>Loan period:</b> {{ loanPeriodGroup.getRawValue().periodCtrl }} months</p>
+      <div>
+        <button (click)="stepper.reset()" *ngIf="!isConfirmClicked" mat-stroked-button>Reset</button>
+        <button (click)="confirm()" *ngIf="!isConfirmClicked" mat-flat-button>Confirm</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+  <div class="container">
+    <mat-progress-spinner *ngIf="isLoading" color="accent" mode="indeterminate"></mat-progress-spinner>
+
+    <div *ngIf="isConfirmClicked && tempLoanOffers.length == 0" class="loan-offers-container">
+      <h5><i style="color: red">Sorry!</i> We cannot offer you loan this time. Please try again after 3 months.</h5>
+    </div>
+
+    <div *ngIf="isConfirmClicked && !isChooseClicked && tempLoanOffers.length > 0" class="decision-message">
+      <h5>Woohooo!The loan decision is <i style="color:green;">{{ loanResponse?.loanDecisionStatus }}</i>.
+      </h5>
+      <p>We can offer you the following options.</p>
+    </div>
+
+    <div *ngIf="tempLoanOffers.length > 0" class="loan-offers-container">
+      <mat-card *ngFor="let tempLoanOffer of tempLoanOffers" [@zoomOutPop]
+                [ngClass]="{'highlight': tempLoanOffer === getHighestLoanOffer()}"
+                class="loan-offer-card">
+        <mat-card-header>
+          <mat-card-title style="font-family: SansSerif,serif">{{ tempLoanOffer.loanOffer.type }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="loan-offer-details">
+            <p><span class="label">Loan Amount</span><span class="value">{{ tempLoanOffer.loanOffer.loanAmount }} €
+            </span></p>
+
+            <p><span class="label">Period</span><span class="value">{{ tempLoanOffer.period }} months</span></p>
+            <mat-slider
+              *ngIf="!isChooseClicked  && tempLoanOffer.loanOffer.minPeriod !== tempLoanOffer.loanOffer.maxPeriod"
+              [max]="tempLoanOffer.loanOffer.maxPeriod" [min]="tempLoanOffer.loanOffer.minPeriod"
+              [step]="1" class="slider">
+              <input #periodSliderOffer (change)="onPeriodChange(tempLoanOffer, $event)" matSliderThumb>
+            </mat-slider>
+
+            <p><span class="label">Monthly Payment</span>
+              <span class="value">{{ tempLoanOffer.monthlyAmount }} €</span></p>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button (click)="chooseLoanOffer(tempLoanOffer)" *ngIf="!isChooseClicked" mat-button mat-flat-button>Choose
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <mat-progress-spinner *ngIf="isContractLoading" color="accent" mode="indeterminate"></mat-progress-spinner>
+    <div *ngIf="selectedLoanOffer && showContractMessage" class="decision-message">
+      <h3><i>Congratulations!</i> You have selected {{ selectedLoanOffer.loanOffer.type }} loan.</h3>
+      <p>You can find the loan contract under 'My contracts' section in the dashboard. <br/>This loan will be
+        disbursed to your bank account within 3 work days.</p>
+    </div>
+  </div>
+</div>

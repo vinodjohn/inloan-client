@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="left-side">
+    <div class="content">
+      <h2><i>Welcome</i> to Inbank!</h2>
+      <p style="color: white">Sign up to access intelligent loan solutions tailored to <br> your financial goals.</p>
+    </div>
+  </div>
+  <div class="vertical-line"></div>
+  <div class="right-side">
+    <mat-card>
+      <mat-card-title class="action-buttons">Sign Up</mat-card-title>
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input formControlName="firstName" matInput placeholder="First name" required>
+            <mat-error *ngIf="signUpForm.get('firstName')?.hasError('required')">First name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input formControlName="lastName" matInput placeholder="Last name" required>
+            <mat-error *ngIf="signUpForm.get('lastName')?.hasError('required')">Last name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>ID code</mat-label>
+            <input formControlName="idCode" matInput placeholder="ID code" required type="text">
+            <mat-error *ngIf="signUpForm.get('idCode')?.hasError('required')">ID Code is required</mat-error>
+            <mat-error *ngIf="signUpForm.get('idCode')?.hasError('pattern')">Invalid ID code</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" matInput
+                   minlength="6" placeholder="Create a password" required>
+            <button (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword" mat-icon-button
+                    matSuffix>
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-hint>At least 6 characters</mat-hint>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 6
+              characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" matInput
+                   minlength="6" placeholder="Confirm password" required>
+            <button (click)="toggleConfirmPasswordVisibility()"
+                    [attr.aria-label]="hideConfirmPassword ? 'Show password' : 'Hide password'"
+                    [attr.aria-pressed]="hideConfirmPassword" mat-icon-button matSuffix>
+              <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.hasError('required')">Confirm Password is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.hasError('minlength')">Confirm Password must be at
+              least 6
+              characters
+            </mat-error>
+            <mat-error *ngIf="passwordsMismatch">Passwords do not match</mat-error>
+          </mat-form-field>
+
+          <div class="action-buttons">
+            <button [disabled]="loading" class="full-width" color="primary" mat-flat-button type="submit">
+              <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+              Sign Up
+            </button>
+            <div class="link-button">
+              Already have an account?
+              <button color="primary" mat-button routerLink="/sign-in" type="button">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

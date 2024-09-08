@@ -1,0 +1,151 @@
+.new-loan-h2 {
+  margin: 0 10px;
+}
+
+.new-loan-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
+.new-loan-margin {
+  margin: 8px;
+}
+
+.new-loan-width {
+  max-width: 180px;
+  width: 100%;
+}
+
+.mat-mdc-slider {
+  max-width: 300px;
+  width: 100%;
+}
+
+.mat-mdc-card + .mat-mdc-card {
+  margin-top: 8px;
+}
+
+.new-loan-result-card h2 {
+  margin: 0 8px;
+}
+
+.new-loan-label-container {
+  display: flex;
+  margin: 20px 10px 0;
+  max-width: 284px;
+  font-weight: bolder;
+  font-size: 35px;
+}
+
+button {
+  margin-right: 20px;
+}
+
+.new-loan-name-label {
+  padding-left: 7px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mat-progress-spinner {
+  margin-top: 20px;
+}
+
+.loan-offers-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+mat-card {
+  width: 300px;
+  margin: 10px;
+  transition: transform 0.3s;
+}
+
+mat-card:hover {
+  transform: scale(1.05);
+}
+
+h3 {
+  margin-top: 20px;
+  font-family: Georgia, Times, serif;
+}
+
+h5 {
+  margin-top: 20px;
+  font-family: Georgia, Times, serif;
+}
+
+.loan-offer-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.loan-offer-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.loan-offer-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.decision-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.value {
+  color: #21093A;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mat-slider {
+  width: 100%;
+}
+
+.highlight {
+  background-color: #BBA8FF;
+}
+
+.highlight .label {
+  color: white;
+}
+
+.highlight button {
+  background: white;
+  color: #21093A;
+}
+
+.highlight mat-slider {
+  color: white;
+}
+
+mat-card-content {
+  flex: 1 1 auto;
+}
+
+mat-card-actions {
+  align-self: flex-end;
+}
+
+.snackbar-error {
+  background-color: #f44336;
+  color: white;
+}
