@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {LoanApplication} from "../shared/model/LoanApplication";
 import {LoanOfferExtended} from "../shared/model/LoanOfferExtended";
 import {LoanOfferService} from "../shared/service/loan-offer.service";
 import {map, merge, Observable, startWith} from "rxjs";
@@ -61,7 +60,7 @@ export class LoanApplicationInfoComponent implements AfterViewInit {
               return new Observable();
             })
           ).subscribe((data: any) => this.data = data);
-      }, error: error => {
+      }, error: () => {
         this.snackBar.open('Technical error!, Please try again later.', 'Close', {
           duration: 2000,
           panelClass: ['snackbar-error']

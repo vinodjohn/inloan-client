@@ -10,7 +10,7 @@ export class EventBusService {
   private subject$ = new Subject<EventData>();
 
   emit(event: EventData) {
-    this.subject$.next(event);
+    this.subject$.next();
   }
 
   on(eventName: string, action: any): Subscription {

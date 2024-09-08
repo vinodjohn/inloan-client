@@ -1,5 +1,3 @@
-import {LoanOffer} from "./LoanOffer";
-
 export class LoanContractRequest {
   loanOfferId: string;
   period: number;

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../shared/service/auth.service";
@@ -73,6 +73,12 @@ export class SignUpComponent implements AfterViewInit {
     this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 
+  ngAfterViewInit(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    }
+  }
+
   private passwordMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
@@ -81,11 +87,5 @@ export class SignUpComponent implements AfterViewInit {
       return {'mismatch': true};
     }
     return null;
-  }
-
-  ngAfterViewInit(): void {
-    if (this.storageService.isLoggedIn()) {
-      this.router.navigate(['/']);
-    }
   }
 }

@@ -1,9 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {LoanContract} from "../shared/model/LoanContract";
-import {LoanApplication} from "../shared/model/LoanApplication";
-import {LoanService} from "../shared/service/loan.service";
-import {LoanApplicationService} from "../shared/service/loan-application.service";
 import {LoanContractService} from "../shared/service/loan-contract.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -26,7 +22,7 @@ export class LoanContractComponent implements OnInit {
       next: data => {
         this.loanContract = data;
       },
-      error: error => {
+      error: () => {
         this.snackBar.open('Technical error! Please try again later.', 'Close', {
           duration: 2000,
           panelClass: ['snackbar-error']

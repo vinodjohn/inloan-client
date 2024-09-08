@@ -116,7 +116,7 @@ export class NewLoanComponent implements OnInit {
         console.log(this.tempLoanOffers);
         this.isLoading = false;
       },
-      error: error => {
+      error: () => {
         this.isLoading = false;
         this.viewErrorSnackBar();
       }
@@ -145,11 +145,11 @@ export class NewLoanComponent implements OnInit {
     this.loanContract = new LoanContractRequest(this.selectedLoanOffer.loanOffer.loanOfferId,
       this.selectedLoanOffer.period, this.interestRate, this.selectedLoanOffer.monthlyAmount)
     this.loanContractService.createLoanContract(this.loanContract).subscribe({
-        next: data => {
+        next: () => {
           this.isContractLoading = false;
           this.showContractMessage = true;
         },
-        error: error => {
+        error: () => {
           this.isContractLoading = false;
           this.viewErrorSnackBar();
         }
