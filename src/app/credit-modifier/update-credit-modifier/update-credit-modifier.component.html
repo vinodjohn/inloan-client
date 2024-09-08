@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Update credit modifier</h1>
+<div mat-dialog-content>
+  <mat-vertical-stepper #stepper [linear]="true">
+    <mat-step [editable]="isStepEditable" [stepControl]="cmNameGroup">
+      <form [formGroup]="cmNameGroup">
+        <ng-template matStepLabel>Fill out credit modifier</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input formControlName="nameCtrl" matInput required type="text">
+        </mat-form-field>
+        <div>
+          <button color="primary" mat-stroked-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [editable]="isStepEditable" [stepControl]="cmValueGroup">
+      <form [formGroup]="cmValueGroup">
+        <ng-template matStepLabel>Fill out credit modifier</ng-template>
+        <mat-form-field>
+          <mat-label>Value</mat-label>
+          <input formControlName="valueCtrl" matInput pattern="^\d+(\.\d+)*$" required type="number">
+        </mat-form-field>
+        <div>
+          <button color="primary" mat-stroked-button matStepperPrevious>Back</button>
+          <button (click)="updateCreditModifier()" color="primary" mat-stroked-button matStepperNext>Submit</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Result</ng-template>
+      <div *ngIf="showSpinner">
+        <p>Update credit modifier...</p>
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="hasError">
+        <p class="error-message">Cannot add credit modifier! Server error, please try again later.</p>
+        <p *ngIf="errorMessage.length > 0" class="error-message"><b>Errors: </b><br> {{ errorMessage }}</p>
+
+        <div class="result-buttons">
+          <button (click)="stepper.reset(); resetResult();" color="primary" mat-stroked-button>Reset</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" *ngIf="isStepEditable" color="primary" mat-stroked-button>Cancel</button>
+</div>

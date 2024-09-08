@@ -51,14 +51,21 @@ import {
   MatStepperPrevious
 } from "@angular/material/stepper";
 import {MatSlider, MatSliderModule} from "@angular/material/slider";
-import {MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {NgOptimizedImage} from "@angular/common";
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {LoanContractComponent} from './loan-contract/loan-contract.component';
 import {MatDivider} from "@angular/material/divider";
-import { LoanApplicationInfoComponent } from './loan-application-info/loan-application-info.component';
-import { LoanApplicationComponent } from './loan-application/loan-application.component';
+import {LoanApplicationInfoComponent} from './loan-application-info/loan-application-info.component';
+import {LoanApplicationComponent} from './loan-application/loan-application.component';
+import {CreditModifierComponent} from './credit-modifier/credit-modifier.component';
+import {AddCreditModifierComponent} from './credit-modifier/add-credit-modifier/add-credit-modifier.component';
+import {UpdateCreditModifierComponent} from './credit-modifier/update-credit-modifier/update-credit-modifier.component';
+import {DeleteCreditModifierComponent} from './credit-modifier/delete-credit-modifier/delete-credit-modifier.component';
+import {
+  RestoreCreditModifierComponent
+} from './credit-modifier/restore-credit-modifier/restore-credit-modifier.component';
 
 const appRoutes: Routes = [
   {
@@ -88,6 +95,10 @@ const appRoutes: Routes = [
   {
     path: 'loan-application-info/:id',
     component: LoanApplicationInfoComponent
+  },
+  {
+    path: 'credit-modifier',
+    component: CreditModifierComponent
   }
 ];
 
@@ -100,7 +111,12 @@ const appRoutes: Routes = [
     SignUpComponent,
     LoanContractComponent,
     LoanApplicationInfoComponent,
-    LoanApplicationComponent
+    LoanApplicationComponent,
+    CreditModifierComponent,
+    AddCreditModifierComponent,
+    UpdateCreditModifierComponent,
+    DeleteCreditModifierComponent,
+    RestoreCreditModifierComponent
   ],
   imports: [
     BrowserModule,
@@ -163,7 +179,9 @@ const appRoutes: Routes = [
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
-    MatDivider
+    MatDivider,
+    MatDialogActions,
+    MatDialogClose
   ],
   providers: [
     provideAnimationsAsync(),
