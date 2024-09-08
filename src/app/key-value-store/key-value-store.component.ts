@@ -72,7 +72,7 @@ export class KeyValueStoreComponent implements AfterViewInit {
       data: keyValueStore
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -82,7 +82,7 @@ export class KeyValueStoreComponent implements AfterViewInit {
       data: keyValueStore.id
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -92,7 +92,7 @@ export class KeyValueStoreComponent implements AfterViewInit {
       data: keyValueStore.id
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 }
