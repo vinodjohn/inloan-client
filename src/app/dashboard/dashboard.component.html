@@ -33,9 +33,7 @@
 
           <ng-container matColumnDef="monthlyAmount">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Monthly amount</th>
-            <td *matCellDef="let row" class="truncate-cell"
-                mat-cell> {{ row.monthlyAmount }} €
-            </td>
+            <td *matCellDef="let row" mat-cell> {{ row.monthlyAmount }} €</td>
           </ng-container>
 
           <ng-container matColumnDef="period">

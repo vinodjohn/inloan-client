@@ -8,14 +8,9 @@ import {CreditModifierService} from "../../shared/service/credit-modifier.servic
   templateUrl: './restore-credit-modifier.component.html',
   styleUrl: './restore-credit-modifier.component.css'
 })
-export class RestoreCreditModifierComponent implements OnInit {
-
+export class RestoreCreditModifierComponent {
   constructor(public dialogRef: MatDialogRef<RestoreCreditModifierComponent>, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public id: string, private creditModifierService: CreditModifierService) {
-
-  }
-
-  ngOnInit(): void {
   }
 
   restoreCreditModifier() {

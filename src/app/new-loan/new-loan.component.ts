@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {KeyStoreService} from "../shared/service/key-store.service";
+import {KeyValueStoreService} from "../shared/service/key-value-store.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoanService} from "../shared/service/loan.service";
 import {LoanRequest} from "../shared/model/LoanRequest";
@@ -60,7 +60,7 @@ export class NewLoanComponent implements OnInit {
     periodCtrl: [this.minPeriod, Validators.required],
   });
 
-  constructor(private kvStoreService: KeyStoreService, private loanService: LoanService,
+  constructor(private kvStoreService: KeyValueStoreService, private loanService: LoanService,
               private loanContractService: LoanContractService, private snackBar: MatSnackBar) {
   }
 

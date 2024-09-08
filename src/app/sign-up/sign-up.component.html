@@ -34,7 +34,7 @@
             <mat-label>Password</mat-label>
             <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" matInput
                    minlength="6" placeholder="Create a password" required>
-            <button (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
+            <button type="button" (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hidePassword" mat-icon-button
                     matSuffix>
               <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -50,7 +50,7 @@
             <mat-label>Confirm Password</mat-label>
             <input [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" matInput
                    minlength="6" placeholder="Confirm password" required>
-            <button (click)="toggleConfirmPasswordVisibility()"
+            <button type="button" (click)="toggleConfirmPasswordVisibility()"
                     [attr.aria-label]="hideConfirmPassword ? 'Show password' : 'Hide password'"
                     [attr.aria-pressed]="hideConfirmPassword" mat-icon-button matSuffix>
               <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>

@@ -8,16 +8,12 @@ import {CreditModifierService} from "../../shared/service/credit-modifier.servic
   templateUrl: './delete-credit-modifier.component.html',
   styleUrl: './delete-credit-modifier.component.css'
 })
-export class DeleteCreditModifierComponent implements OnInit {
-
+export class DeleteCreditModifierComponent {
   constructor(public dialogRef: MatDialogRef<DeleteCreditModifierComponent>, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public id: string, private creditModifierService: CreditModifierService) {
   }
 
-  ngOnInit(): void {
-  }
-
-  deleteCar() {
+  deleteCreditModifier() {
     this.creditModifierService.deleteCreditModifier(this.id)
       .subscribe(() => {
         this.dialogRef.close();

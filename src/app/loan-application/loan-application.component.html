@@ -33,9 +33,7 @@
 
           <ng-container matColumnDef="requestedAmount">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Loan amount</th>
-            <td *matCellDef="let row" class="truncate-cell"
-                mat-cell> {{ row.requestAmount }} €
-            </td>
+            <td *matCellDef="let row" mat-cell> {{ row.requestAmount }} €</td>
           </ng-container>
 
           <ng-container matColumnDef="actions">

@@ -1,8 +1,8 @@
 <div class="container-xl">
   <div class="jumbotron">
     <div class="container d-flex justify-content-between align-items-center">
-      <h3 class="jumbotron-heading">Credit Modifier</h3>
-      <button (click)="addCreditModifier()" aria-label="Add new credit modifier" class="float-right" color="primary"
+      <h3 class="jumbotron-heading">Key Value Store</h3>
+      <button (click)="addKeyValueStore()" aria-label="Add new key value" class="float-right" color="primary"
               mat-fab>
         <mat-icon>add</mat-icon>
       </button>
@@ -11,31 +11,31 @@
     <div *ngIf="data.length == 0" class="message-container">
       <mat-card class="message-card">
         <mat-card-content>
-          <p>No credit modifiers found.</p>
+          <p>No key value found.</p>
         </mat-card-content>
       </mat-card>
     </div>
 
-    <div [hidden]="data.length == 0" class="credit-modifier-container mat-elevation-z8">
+    <div [hidden]="data.length == 0" class="kv-store-container mat-elevation-z8">
       <div *ngIf="isLoadingResults || isRateLimitReached"
-           class="credit-modifier-loading-shade">
+           class="kv-store-loading-shade">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-        <div *ngIf="isRateLimitReached" class="credit-modifier-rate-limit-reached">
+        <div *ngIf="isRateLimitReached" class="kv-store-rate-limit-reached">
           Rate limit has been reached. Please try again later.
         </div>
       </div>
 
-      <div class="credit-modifier-table-container">
-        <table [dataSource]="data" class="credit-modifier-table" mat-table
+      <div class="kv-store-table-container">
+        <table [dataSource]="data" class="kv-store-table" mat-table
                matSort matSortActive="createdDate" matSortDirection="asc" matSortDisableClear>
           <ng-container matColumnDef="id">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Id</th>
             <td *matCellDef="let row" class="truncate-cell" mat-cell> {{ row.id }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="name">
-            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Name</th>
-            <td *matCellDef="let row" mat-cell> {{ row.name }}</td>
+          <ng-container matColumnDef="key">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Key</th>
+            <td *matCellDef="let row" mat-cell> {{ row.key }}</td>
           </ng-container>
 
           <ng-container matColumnDef="value">
@@ -56,16 +56,16 @@
           <ng-container matColumnDef="actions">
             <th *matHeaderCellDef mat-header-cell>Actions</th>
             <td *matCellDef="let row" mat-cell>
-              <button (click)="updateCreditModifier(row)"
-                      *ngIf="row.isActive" aria-label="Update credit modifier" color="primary"
+              <button (click)="updateKeyValueStore(row)"
+                      *ngIf="row.isActive" aria-label="Update key value" color="primary"
                       mat-icon-button>
                 <mat-icon>edit</mat-icon>
               </button>
-              <button (click)="deleteCreditModifier(row)" *ngIf="row.isActive" aria-label="Delete credit modifier" color="warn"
+              <button (click)="deleteKeyValueStore(row)" *ngIf="row.isActive" aria-label="Delete key value" color="warn"
                       mat-icon-button>
                 <mat-icon>delete</mat-icon>
               </button>
-              <button (click)="restoreCreditModifier(row)" *ngIf="!row.isActive" aria-label="Restore credit modifier" color="accent"
+              <button (click)="restoreKeyValueStore(row)" *ngIf="!row.isActive" aria-label="Restore key value" color="accent"
                       mat-icon-button>
                 <mat-icon>restore</mat-icon>
               </button>

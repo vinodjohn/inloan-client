@@ -66,6 +66,13 @@ import {DeleteCreditModifierComponent} from './credit-modifier/delete-credit-mod
 import {
   RestoreCreditModifierComponent
 } from './credit-modifier/restore-credit-modifier/restore-credit-modifier.component';
+import {KeyValueStoreComponent} from './key-value-store/key-value-store.component';
+import {AddKeyValueStoreComponent} from './key-value-store/add-key-value-store/add-key-value-store.component';
+import {UpdateKeyValueStoreComponent} from './key-value-store/update-key-value-store/update-key-value-store.component';
+import {DeleteKeyValueStoreComponent} from './key-value-store/delete-key-value-store/delete-key-value-store.component';
+import {
+  RestoreKeyValueStoreComponent
+} from './key-value-store/restore-key-value-store/restore-key-value-store.component';
 
 const appRoutes: Routes = [
   {
@@ -99,6 +106,10 @@ const appRoutes: Routes = [
   {
     path: 'credit-modifier',
     component: CreditModifierComponent
+  },
+  {
+    path: 'kv-store',
+    component: KeyValueStoreComponent
   }
 ];
 
@@ -116,7 +127,12 @@ const appRoutes: Routes = [
     AddCreditModifierComponent,
     UpdateCreditModifierComponent,
     DeleteCreditModifierComponent,
-    RestoreCreditModifierComponent
+    RestoreCreditModifierComponent,
+    KeyValueStoreComponent,
+    AddKeyValueStoreComponent,
+    UpdateKeyValueStoreComponent,
+    DeleteKeyValueStoreComponent,
+    RestoreKeyValueStoreComponent
   ],
   imports: [
     BrowserModule,

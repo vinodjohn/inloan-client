@@ -23,9 +23,8 @@
             <mat-label>Password</mat-label>
             <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" matInput
                    placeholder="Enter your password" required>
-            <button (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hidePassword" mat-icon-button
-                    matSuffix>
+            <button type="button" (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword" mat-icon-button matSuffix>
               <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
             <mat-error *ngIf="signInForm.get('password')?.hasError('required')">Password is required</mat-error>

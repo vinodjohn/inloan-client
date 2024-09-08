@@ -13,7 +13,6 @@ import {CreditModifier} from "../../shared/model/CreditModifier";
 export class AddCreditModifierComponent {
   isStepEditable: boolean = true;
   errorMessage: string = "";
-
   hasError = false;
   showSpinner = true;
 
@@ -23,7 +22,7 @@ export class AddCreditModifierComponent {
     nameCtrl: ['', Validators.required],
   });
   cmValueGroup = this._formBuilder.group({
-    valueCtrl: [0, Validators.required],
+    valueCtrl: [0, [Validators.required, Validators.min(1)]],
   });
 
   constructor(public dialogRef: MatDialogRef<AddCreditModifierComponent>, private snackBar: MatSnackBar,

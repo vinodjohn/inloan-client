@@ -1,10 +1,10 @@
-.credit-modifier-container {
+.kv-store-container {
   position: relative;
   min-height: 200px;
   margin-top: 50px;
 }
 
-.credit-modifier-table-container {
+.kv-store-table-container {
   position: relative;
   max-height: 400px;
   overflow: auto;
@@ -14,7 +14,7 @@ table {
   width: 100%;
 }
 
-.credit-modifier-loading-shade {
+.kv-store-loading-shade {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,7 +27,7 @@ table {
   justify-content: center;
 }
 
-.credit-modifier-rate-limit-reached {
+.kv-store-rate-limit-reached {
   color: #980000;
   max-width: 360px;
   text-align: center;
@@ -79,6 +79,7 @@ th[mat-header-cell] {
 .page-content {
   margin-top: 30px;
 }
+
 
 .message-container {
   display: flex;

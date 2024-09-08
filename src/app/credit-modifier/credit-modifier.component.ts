@@ -18,10 +18,9 @@ import {CreditModifierService} from "../shared/service/credit-modifier.service";
   styleUrl: './credit-modifier.component.css'
 })
 export class CreditModifierComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id','name', 'value', 'createdDate', 'isActive', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'value', 'createdDate', 'isActive', 'actions'];
   data: CreditModifier[] = [];
   isCreditModifierAdded: boolean = false;
-
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -63,7 +62,7 @@ export class CreditModifierComponent implements AfterViewInit {
       data: this.isCreditModifierAdded
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -73,7 +72,7 @@ export class CreditModifierComponent implements AfterViewInit {
       data: creditModifier
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -83,7 +82,7 @@ export class CreditModifierComponent implements AfterViewInit {
       data: creditModifier.id
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -93,7 +92,7 @@ export class CreditModifierComponent implements AfterViewInit {
       data: creditModifier.id
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 }

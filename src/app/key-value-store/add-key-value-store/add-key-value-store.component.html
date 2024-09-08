@@ -1,12 +1,12 @@
-<h1 mat-dialog-title>Add new credit modifier</h1>
+<h1 mat-dialog-title>Add new key value</h1>
 <div mat-dialog-content>
   <mat-vertical-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="cmNameGroup" [editable]="isStepEditable">
-      <form [formGroup]="cmNameGroup">
-        <ng-template matStepLabel>Fill out name</ng-template>
+    <mat-step [stepControl]="kvKeyGroup" [editable]="isStepEditable">
+      <form [formGroup]="kvKeyGroup">
+        <ng-template matStepLabel>Fill out key</ng-template>
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input type="text" matInput formControlName="nameCtrl" required>
+          <mat-label>Key</mat-label>
+          <input type="text" matInput formControlName="keyCtrl" required>
         </mat-form-field>
         <div>
           <button mat-stroked-button color="primary" matStepperNext>Next</button>
@@ -14,8 +14,8 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="cmValueGroup" [editable]="isStepEditable">
-      <form [formGroup]="cmValueGroup">
+    <mat-step [stepControl]="kvValueGroup" [editable]="isStepEditable">
+      <form [formGroup]="kvValueGroup">
         <ng-template matStepLabel>Fill out value</ng-template>
         <mat-form-field>
           <mat-label>Value</mat-label>
@@ -23,7 +23,7 @@
         </mat-form-field>
         <div>
           <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
-          <button mat-stroked-button color="primary" matStepperNext (click)="addCreditModifier()">Submit</button>
+          <button mat-stroked-button color="primary" matStepperNext (click)="addKV()">Submit</button>
         </div>
       </form>
     </mat-step>
@@ -31,11 +31,11 @@
     <mat-step>
       <ng-template matStepLabel>Result</ng-template>
       <div *ngIf="showSpinner">
-        <p>Adding new credit modifier...</p>
+        <p>Adding new key value...</p>
         <mat-spinner></mat-spinner>
       </div>
       <div *ngIf="hasError">
-        <p class="error-message">Cannot add credit modifier! Server error, please try again later.</p>
+        <p class="error-message">Cannot add key value! Server error, please try again later.</p>
         <p class="error-message" *ngIf="errorMessage.length > 0"><b>Errors: </b><br> {{ errorMessage }}</p>
 
         <div class="result-buttons">

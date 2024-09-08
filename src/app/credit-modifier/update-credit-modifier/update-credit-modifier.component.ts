@@ -15,10 +15,8 @@ export class UpdateCreditModifierComponent implements OnInit {
   cmValueGroup!: FormGroup;
   isStepEditable: boolean = true;
   errorMessage: string = "";
-
   hasError = false;
   showSpinner = true;
-
 
   constructor(public _formBuilder: FormBuilder, public dialogRef: MatDialogRef<UpdateCreditModifierComponent>, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: CreditModifier,
@@ -30,7 +28,7 @@ export class UpdateCreditModifierComponent implements OnInit {
       nameCtrl: [this.data.name, Validators.required],
     });
     this.cmValueGroup = this._formBuilder.group({
-      valueCtrl: [this.data.value, Validators.required],
+      valueCtrl: [this.data.value, [Validators.required, Validators.min(1)]],
     });
   }
 
@@ -39,7 +37,7 @@ export class UpdateCreditModifierComponent implements OnInit {
     const value = this.cmValueGroup.get('valueCtrl')?.value ?? 0;
     const creditModifier = new CreditModifier(this.data.id, name, value, this.data.isActive);
 
-    this.creditModifierService.createCreditModifier(creditModifier).subscribe(() => {
+    this.creditModifierService.updateCreditModifier(creditModifier).subscribe(() => {
         this.isStepEditable = false;
         this.showSpinner = false;
         this.onNoClick();

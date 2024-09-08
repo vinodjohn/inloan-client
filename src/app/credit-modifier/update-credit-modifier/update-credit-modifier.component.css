@@ -1,0 +1,24 @@
+button[matStepperPrevious] {
+  margin-right: 10px;
+}
+
+.error-message {
+  margin-bottom: 20px;
+  color: red;
+}
+
+.result-buttons{
+  margin-top: 20px;
+}
+
+.success-message {
+  color: green;
+}
+
+.snack-error-message {
+  color: red;
+}
+
+mat-form-field {
+  margin-top: 20px;
+}

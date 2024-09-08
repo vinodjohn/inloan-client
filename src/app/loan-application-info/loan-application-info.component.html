@@ -46,9 +46,7 @@
 
           <ng-container matColumnDef="creditScore">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Credit score</th>
-            <td *matCellDef="let row" class="truncate-cell"
-                mat-cell> {{ row.creditScore }}
-            </td>
+            <td *matCellDef="let row"  mat-cell> {{ row.creditScore }}</td>
           </ng-container>
 
           <ng-container matColumnDef="loanAmount">
