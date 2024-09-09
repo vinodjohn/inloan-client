@@ -47,7 +47,7 @@ export class SignInComponent implements AfterViewInit {
           this.isSignInFailed = true;
           this.loading = false;
 
-          this.snackBar.open(this.errorMessage, 'Close', {
+          this.snackBar.open(this.errorMessage.concat(" ").concat(err.error.details.map((x: any) => x).join(",")), 'Close', {
             duration: 2000,
             panelClass: ['snackbar-error']
           });

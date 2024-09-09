@@ -73,6 +73,12 @@ import {DeleteKeyValueStoreComponent} from './key-value-store/delete-key-value-s
 import {
   RestoreKeyValueStoreComponent
 } from './key-value-store/restore-key-value-store/restore-key-value-store.component';
+import {PersonComponent} from './person/person.component';
+import {UpdatePersonComponent} from './person/update-person/update-person.component';
+import {DeletePersonComponent} from './person/delete-person/delete-person.component';
+import {RestorePersonComponent} from './person/restore-person/restore-person.component';
+import {MatOption} from "@angular/material/core";
+import {MatSelect} from "@angular/material/select";
 
 const appRoutes: Routes = [
   {
@@ -110,6 +116,10 @@ const appRoutes: Routes = [
   {
     path: 'kv-store',
     component: KeyValueStoreComponent
+  },
+  {
+    path: 'person',
+    component: PersonComponent
   }
 ];
 
@@ -132,7 +142,11 @@ const appRoutes: Routes = [
     AddKeyValueStoreComponent,
     UpdateKeyValueStoreComponent,
     DeleteKeyValueStoreComponent,
-    RestoreKeyValueStoreComponent
+    RestoreKeyValueStoreComponent,
+    PersonComponent,
+    UpdatePersonComponent,
+    DeletePersonComponent,
+    RestorePersonComponent
   ],
   imports: [
     BrowserModule,
@@ -197,7 +211,9 @@ const appRoutes: Routes = [
     MatMenuItem,
     MatDivider,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    MatOption,
+    MatSelect
   ],
   providers: [
     provideAnimationsAsync(),

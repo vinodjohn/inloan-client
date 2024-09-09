@@ -41,7 +41,7 @@ export class UpdateCreditModifierComponent implements OnInit {
         this.isStepEditable = false;
         this.showSpinner = false;
         this.onNoClick();
-        this.snackBar.open('Credit modifier has been added successfully!', 'Close', {
+        this.snackBar.open('Credit modifier has been updated successfully!', 'Close', {
           duration: 6000,
           panelClass: 'success-message'
         });

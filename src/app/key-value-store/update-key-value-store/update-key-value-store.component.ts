@@ -41,7 +41,7 @@ export class UpdateKeyValueStoreComponent implements OnInit {
         this.isStepEditable = false;
         this.showSpinner = false;
         this.onNoClick();
-        this.snackBar.open('Key value has been added successfully!', 'Close', {
+        this.snackBar.open('Key value has been updated successfully!', 'Close', {
           duration: 6000,
           panelClass: 'success-message'
         });
