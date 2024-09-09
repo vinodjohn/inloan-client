@@ -18,10 +18,6 @@ export class KeyValueStoreService {
     return this.httpClient.get(this.KV_BASE_URL.concat('/new-loan'));
   }
 
-  public getKeyValueById(id: string) {
-    return this.httpClient.get(this.KV_BASE_URL.concat('/').concat(id));
-  }
-
   public getAllKeyValue(sort: string, order: string, page: number) {
     return this.httpClient.get<GenResponseList>(this.KV_BASE_URL + '?page=' + page + '&items='
       + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);

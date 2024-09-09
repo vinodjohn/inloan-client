@@ -15,10 +15,6 @@ export class CreditModifierService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getCreditModifierById(id: string) {
-    return this.httpClient.get(this.CREDIT_MODIFIER_URL.concat('/').concat(id));
-  }
-
   public getAllCreditModifier(sort: string, order: string, page: number) {
     return this.httpClient.get<GenResponseList>(this.CREDIT_MODIFIER_URL + '?page=' + page + '&items='
       + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);

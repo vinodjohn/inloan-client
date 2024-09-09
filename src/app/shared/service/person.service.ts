@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {GenResponseList} from "../model/GenResponseList";
 import {environment} from "../../../environments/environment";
 import {Person} from "../model/Person";
-import {Observable} from "rxjs";
+import {ChangePassword} from "../model/ChangePassword";
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,6 @@ export class PersonService {
       + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);
   }
 
-  public createPerson(person: Person): Observable<any> {
-    return this.httpClient.post(this.PERSON_URL, person);
-  }
-
   public updatePerson(person: Person) {
     return this.httpClient.put(this.PERSON_URL, person);
   }
@@ -38,5 +34,10 @@ export class PersonService {
 
   public restorePerson(id: string) {
     return this.httpClient.get(this.PERSON_URL.concat('/restore/').concat(id));
+  }
+
+  public changePassword(changePassword: ChangePassword) {
+    console.log(changePassword);
+    return this.httpClient.post(this.PERSON_URL.concat('/change-password'), changePassword);
   }
 }

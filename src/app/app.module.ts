@@ -80,6 +80,7 @@ import {RestorePersonComponent} from './person/restore-person/restore-person.com
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {ProfileComponent} from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const appRoutes: Routes = [
   {
@@ -125,6 +126,10 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent
   }
 ];
 
@@ -152,7 +157,8 @@ const appRoutes: Routes = [
     UpdatePersonComponent,
     DeletePersonComponent,
     RestorePersonComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
