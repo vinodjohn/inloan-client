@@ -25,3 +25,15 @@ td.true {
 td.false {
   color: red;
 }
+
+.ACCEPTED {
+  color: green;
+}
+
+.REJECTED {
+  color: red;
+}
+
+.PENDING {
+  color: orange;
+}

@@ -80,12 +80,12 @@
 
           <ng-container matColumnDef="loanOfferType">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Type</th>
-            <td *matCellDef="let row" mat-cell>{{ row.loanOfferType }}</td>
+            <td *matCellDef="let row" mat-cell><b>{{ row.loanOfferType }}</b></td>
           </ng-container>
 
           <ng-container matColumnDef="loanOfferStatus" *ngIf="isAdmin">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
-            <td *matCellDef="let row" mat-cell>{{ row.loanOfferStatus }}</td>
+            <td *matCellDef="let row" mat-cell [class]="row.loanOfferStatus.toString()"><b>{{ row.loanOfferStatus }}</b></td>
           </ng-container>
 
           <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>

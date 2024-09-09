@@ -11,51 +11,52 @@
 
     <div class="loan-contract-info-container">
       <div class="loan-contract-info-item">
-        <strong>Contract ID:</strong> {{ loanContract.id }}
+        <strong>Contract ID:</strong> {{ loanContract?.id }}
       </div>
       <div *ngIf="isAdmin" class="loan-contract-info-item">
-        <strong>Client first name:</strong> {{ loanContract.loanOffer.loanApplication.person.firstName }}
+        <strong>Client first name:</strong> {{ loanContract?.loanOffer.loanApplication.person.firstName }}
       </div>
       <div *ngIf="isAdmin" class="loan-contract-info-item">
-        <strong>Client last name:</strong> {{ loanContract.loanOffer.loanApplication.person.lastName }}
+        <strong>Client last name:</strong> {{ loanContract?.loanOffer.loanApplication.person.lastName }}
       </div>
       <div *ngIf="isAdmin" class="loan-contract-info-item">
-        <strong>Client ID code:</strong> {{ loanContract.loanOffer.loanApplication.person.personalIdCode }}
+        <strong>Client ID code:</strong> {{ loanContract?.loanOffer.loanApplication.person.personalIdCode }}
       </div>
       <div class="loan-contract-info-item">
-        <strong>Total Loan Amount:</strong> {{ loanContract.loanOffer.loanAmount }} €
+        <strong>Total Loan Amount:</strong> {{ loanContract?.loanOffer.loanAmount }} €
       </div>
       <div class="loan-contract-info-item">
-        <strong>Interest Rate:</strong> {{ loanContract.interestRate }}%
+        <strong>Interest Rate:</strong> {{ loanContract?.interestRate }}%
       </div>
       <div class="loan-contract-info-item">
-        <strong>Period:</strong> {{ loanContract.period }} months
+        <strong>Period:</strong> {{ loanContract?.period }} months
       </div>
       <div class="loan-contract-info-item">
-        <strong>Monthly Amount:</strong> {{ loanContract.monthlyAmount }} €
+        <strong>Monthly Amount:</strong> {{ loanContract?.monthlyAmount }} €
       </div>
       <div class="loan-contract-info-item">
-        <strong>Created date:</strong> {{ loanContract.createdDate | date }}
+        <strong>Created date:</strong> {{ loanContract?.createdDate | date }}
       </div>
-      <div class="loan-contract-info-item {{ loanContract.isActive.toString() }}">
-        <strong>Status:</strong> {{ loanContract.isActive ? 'Active' : 'Not active' }}
+      <div class="loan-contract-info-item {{ loanContract?.isActive.toString() }}">
+        <strong>Status:</strong> {{ loanContract?.isActive ? 'Active' : 'Not active' }}
       </div>
     </div>
 
     <h5 class="jumbotron-heading" style="margin-top: 50px">Accepted loan offer</h5>
     <div class="loan-contract-info-container">
       <div class="loan-contract-info-item">
-        <strong>Loan Amount:</strong> {{ loanContract.loanOffer.loanAmount }} €
+        <strong>Loan Amount:</strong> {{ loanContract?.loanOffer.loanAmount }} €
       </div>
       <div class="loan-contract-info-item">
-        <strong>Period:</strong> {{ loanContract.loanOffer.minPeriod }} to {{ loanContract.loanOffer.maxPeriod }}
+        <strong>Period:</strong> {{ loanContract?.loanOffer.minPeriod }} to {{ loanContract?.loanOffer.maxPeriod }}
         months
       </div>
       <div class="loan-contract-info-item">
-        <strong>Loan type:</strong> {{ loanContract.loanOffer.loanOfferType }}
+        <strong>Loan type: {{ loanContract?.loanOffer.loanOfferType }} </strong>
       </div>
       <div class="loan-contract-info-item">
-        <strong>Status:</strong> {{ loanContract.loanOffer.loanOfferStatus }}
+        <strong>Status: <span class="{{ loanContract?.loanOffer.loanOfferStatus }}">
+          {{ loanContract?.loanOffer.loanOfferStatus }}</span></strong>
       </div>
     </div>
   </div>
