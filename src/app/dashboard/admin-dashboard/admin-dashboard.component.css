@@ -99,3 +99,11 @@ th[mat-header-cell] {
 .my-contracts {
   margin-left: 550px;
 }
+
+td.true {
+  color: green;
+}
+
+td.false {
+  color: red;
+}

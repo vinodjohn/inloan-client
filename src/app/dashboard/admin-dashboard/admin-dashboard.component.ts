@@ -70,5 +70,37 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   onRowClicked(loanContract: LoanContract) {
     this.router.navigate(['/loan-contract/'.concat(loanContract.id)]);
   }
+
+  deleteContract(loanContract: LoanContract) {
+    this.loanContractService.deleteLoanContract(loanContract.id)
+      .subscribe(() => {
+        this.snackBar.open('Contract has been deleted successfully!', 'Close', {
+          duration: 3000,
+          panelClass: 'success-message'
+        });
+        window.location.reload();
+      }, () => {
+        this.snackBar.open('Cannot delete Contract! Please try again later!', 'Close', {
+          duration: 4000,
+          panelClass: 'snack-error-message'
+        });
+      });
+  }
+
+  restoreContract(loanContract: LoanContract) {
+    this.loanContractService.restoreLoanContract(loanContract.id)
+      .subscribe(() => {
+        this.snackBar.open('Contract has been restored successfully!', 'Close', {
+          duration: 6000,
+          panelClass: 'success-message'
+        });
+        window.location.reload();
+      }, () => {
+        this.snackBar.open('Cannot restore Contract! Please try again later!', 'Close', {
+          duration: 6000,
+          panelClass: 'snack-error-message'
+        });
+      });
+  }
 }
 

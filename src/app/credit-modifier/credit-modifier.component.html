@@ -49,8 +49,8 @@
           </ng-container>
 
           <ng-container matColumnDef="isActive">
-            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Active</th>
-            <td *matCellDef="let row" mat-cell>{{ row.isActive }}</td>
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
+            <td *matCellDef="let row" mat-cell [class]="row.isActive.toString()">{{ row.isActive ? 'Active' : 'Inactive' }}</td>
           </ng-container>
 
           <ng-container matColumnDef="actions">

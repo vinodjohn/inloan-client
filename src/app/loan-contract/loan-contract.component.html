@@ -37,7 +37,7 @@
       <div class="loan-contract-info-item">
         <strong>Created date:</strong> {{ loanContract.createdDate | date }}
       </div>
-      <div class="loan-contract-info-item">
+      <div class="loan-contract-info-item {{ loanContract.isActive.toString() }}">
         <strong>Status:</strong> {{ loanContract.isActive ? 'Active' : 'Not active' }}
       </div>
     </div>

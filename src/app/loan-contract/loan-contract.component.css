@@ -17,3 +17,11 @@
 .page-content {
   margin-top: 30px;
 }
+
+td.true {
+  color: green;
+}
+
+td.false {
+  color: red;
+}

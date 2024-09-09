@@ -74,4 +74,36 @@ export class AdminLoanApplicationComponent implements OnInit, AfterViewInit {
   onRowClicked(loanApplication: LoanApplication) {
     this.router.navigate(['/loan-application-info/'.concat(loanApplication.id)]);
   }
+
+  deleteApplication(loanApplication: LoanApplication) {
+    this.loanApplicationService.deleteLoanApplication(loanApplication.id)
+      .subscribe(() => {
+        this.snackBar.open('Loan application has been deleted successfully!', 'Close', {
+          duration: 6000,
+          panelClass: 'success-message'
+        });
+        window.location.reload();
+      }, () => {
+        this.snackBar.open('Cannot delete Loan application! Please try again later!', 'Close', {
+          duration: 6000,
+          panelClass: 'snack-error-message'
+        });
+      });
+  }
+
+  restoreApplication(loanApplication: LoanApplication) {
+    this.loanApplicationService.restoreLoanApplication(loanApplication.id)
+      .subscribe(() => {
+        this.snackBar.open('Loan application has been restored successfully!', 'Close', {
+          duration: 3000,
+          panelClass: 'success-message'
+        });
+        window.location.reload();
+      }, () => {
+        this.snackBar.open('Cannot restore loan application! Please try again later!', 'Close', {
+          duration: 4000,
+          panelClass: 'snack-error-message'
+        });
+      });
+  }
 }

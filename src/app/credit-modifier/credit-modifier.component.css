@@ -94,3 +94,11 @@ th[mat-header-cell] {
   color: #21093A;
   border-radius: 4px;
 }
+
+td.true {
+  color: green;
+}
+
+td.false {
+  color: red;
+}

@@ -47,10 +47,10 @@
               <button (click)="onRowClicked(row)" aria-label="View application" color="primary" mat-icon-button>
                 <mat-icon>remove_red_eye</mat-icon>
               </button>
-              <button *ngIf="row.isActive" aria-label="Delete application" color="warn" mat-icon-button>
+              <button *ngIf="row.isActive" (click)="deleteApplication(row)" aria-label="Delete application" color="warn" mat-icon-button>
                 <mat-icon>delete</mat-icon>
               </button>
-              <button *ngIf="!row.isActive" aria-label="Restore application" color="accent"
+              <button *ngIf="!row.isActive" (click)="restoreApplication(row)" aria-label="Restore application" color="accent"
                       mat-icon-button>
                 <mat-icon>restore</mat-icon>
               </button>

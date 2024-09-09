@@ -54,7 +54,7 @@
 
           <ng-container matColumnDef="isActive">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
-            <td *matCellDef="let row" mat-cell>{{ row.isActive ? 'Active' : 'Inactive' }}</td>
+            <td *matCellDef="let row" mat-cell [class]="row.isActive.toString()">{{ row.isActive ? 'Active' : 'Inactive' }}</td>
           </ng-container>
 
           <ng-container matColumnDef="actions">
@@ -63,10 +63,11 @@
               <button (click)="onRowClicked(row)" aria-label="View contract" color="primary" mat-icon-button>
                 <mat-icon>remove_red_eye</mat-icon>
               </button>
-              <button *ngIf="row.isActive && isAdmin" aria-label="Delete contract" color="warn" mat-icon-button>
+              <button *ngIf="row.isActive && isAdmin" (click)="deleteContract(row)" aria-label="Delete contract" color="warn"
+                      mat-icon-button>
                 <mat-icon>delete</mat-icon>
               </button>
-              <button *ngIf="!row.isActive && isAdmin" aria-label="Restore contract" color="accent"
+              <button *ngIf="!row.isActive && isAdmin" (click)="restoreContract(row)" aria-label="Restore contract" color="accent"
                       mat-icon-button>
                 <mat-icon>restore</mat-icon>
               </button>
