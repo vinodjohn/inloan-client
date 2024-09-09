@@ -79,6 +79,7 @@ import {DeletePersonComponent} from './person/delete-person/delete-person.compon
 import {RestorePersonComponent} from './person/restore-person/restore-person.component';
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
+import {ProfileComponent} from './profile/profile.component';
 
 const appRoutes: Routes = [
   {
@@ -120,6 +121,10 @@ const appRoutes: Routes = [
   {
     path: 'person',
     component: PersonComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 
@@ -146,7 +151,8 @@ const appRoutes: Routes = [
     PersonComponent,
     UpdatePersonComponent,
     DeletePersonComponent,
-    RestorePersonComponent
+    RestorePersonComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
