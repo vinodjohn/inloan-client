@@ -1,0 +1,96 @@
+.person-container {
+  position: relative;
+  min-height: 200px;
+  margin-top: 50px;
+}
+
+.person-table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.person-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+.jumbotron-heading {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+th[mat-header-cell] {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #21093A;
+}
+
+.truncate-cell {
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.created-date {
+  padding-left: 20px;
+}
+
+.page-content {
+  margin-top: 30px;
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.message-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #EBE6FF;
+  color: #21093A;
+  border-radius: 4px;
+}

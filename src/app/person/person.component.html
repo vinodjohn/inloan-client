@@ -1,0 +1,95 @@
+<div class="container-xl">
+  <div class="jumbotron">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h3 class="jumbotron-heading">Clients</h3>
+    </div>
+
+    <div *ngIf="data.length == 0" class="message-container">
+      <mat-card class="message-card">
+        <mat-card-content>
+          <p>No clients found.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div [hidden]="data.length == 0" class="person-container mat-elevation-z8">
+      <div *ngIf="isLoadingResults || isRateLimitReached"
+           class="person-loading-shade">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div *ngIf="isRateLimitReached" class="person-rate-limit-reached">
+          Rate limit has been reached. Please try again later.
+        </div>
+      </div>
+
+      <div class="person-table-container">
+        <table [dataSource]="data" class="person-table" mat-table
+               matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear>
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Id</th>
+            <td *matCellDef="let row" class="truncate-cell" mat-cell> {{ row.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="firstName">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>First name</th>
+            <td *matCellDef="let row" mat-cell> {{ row.firstName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="lastName">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Last name</th>
+            <td *matCellDef="let row" mat-cell> {{ row.lastName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="personalIdCode">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Personal ID</th>
+            <td *matCellDef="let row" mat-cell> {{ row.personalIdCode }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="role">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Role</th>
+            <td *matCellDef="let row" mat-cell> {{ row.role.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="creditModifier">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Credit Modifier</th>
+            <td *matCellDef="let row" mat-cell>{{ row.creditModifier.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th *matHeaderCellDef class="created-date" disableClear mat-header-cell mat-sort-header>Created date</th>
+            <td *matCellDef="let row" class="created-date" mat-cell>{{ row.createdDate | date:'shortDate' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="isActive">
+            <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Active</th>
+            <td *matCellDef="let row" mat-cell>{{ row.isActive }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th *matHeaderCellDef mat-header-cell>Actions</th>
+            <td *matCellDef="let row" mat-cell>
+              <button (click)="updatePerson(row)"
+                      *ngIf="row.isActive" aria-label="Update person" color="primary"
+                      mat-icon-button>
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="deletePerson(row)" *ngIf="row.isActive" aria-label="Delete person" color="warn"
+                      mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button (click)="restorePerson(row)" *ngIf="!row.isActive" aria-label="Restore person" color="accent"
+                      mat-icon-button>
+                <mat-icon>restore</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+      </div>
+
+      <mat-paginator [hidePageSize]="true" [length]="resultsLength" [pageSize]="displayPageSize"
+                     [showFirstLastButtons]="true"></mat-paginator>
+    </div>
+  </div>
+</div>
