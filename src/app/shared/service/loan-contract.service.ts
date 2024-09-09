@@ -27,6 +27,11 @@ export class LoanContractService {
       + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);
   }
 
+  public getAllLoanContracts(sort: string, order: string, page: number) {
+    return this.httpClient.get<GenResponseList>(this.LOAN_CONTRACT_URL + '?page=' + page + '&items='
+      + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);
+  }
+
   // public updateLoanContract(LoanContract: LoanContract) {
   //   return this.httpClient.put(this.LOAN_CONTRACT_URL, vehicleLoanContract);
   // }

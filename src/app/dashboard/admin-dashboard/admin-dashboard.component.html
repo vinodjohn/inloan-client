@@ -1,11 +1,11 @@
 <div class="container-xl">
   <div class="jumbotron">
     <div class="container d-flex">
-      <h3 class="jumbotron-heading">My Contracts</h3>
-      <button *ngIf="isAdmin" aria-label="Show all contracts" class="float-right all-contracts" extended mat-fab
-              routerLink="/admin-dashboard">
-        <mat-icon>list_alt</mat-icon>
-        Show all contracts
+      <h3 class="jumbotron-heading">All Contracts</h3>
+      <button routerLink="/" aria-label="Show my contracts" class="float-right my-contracts" extended
+              mat-fab>
+        <mat-icon>list</mat-icon>
+        Show my contracts
       </button>
       <button aria-label="Add new loan" class="float-right" extended mat-fab routerLink="/new-loan">
         <mat-icon>add_box</mat-icon>
@@ -16,12 +16,12 @@
     <div *ngIf="data.length == 0" class="message-container">
       <mat-card class="message-card">
         <mat-card-content>
-          <p>You do not have any contracts.</p>
+          <p>No contracts found.</p>
         </mat-card-content>
       </mat-card>
     </div>
 
-    <div [hidden]="data.length == 0" class="contract-container mat-elevation-z8">
+    <div [hidden]="data.length == 0 && isAdmin" class="contract-container mat-elevation-z8">
       <div *ngIf="isLoadingResults || isRateLimitReached" class="contract-loading-shade">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         <div *ngIf="isRateLimitReached" class="contract-rate-limit-reached">
@@ -63,10 +63,10 @@
               <button (click)="onRowClicked(row)" aria-label="View contract" color="primary" mat-icon-button>
                 <mat-icon>remove_red_eye</mat-icon>
               </button>
-              <button *ngIf="row.isActive && isAdmin" aria-label="Delete contract" color="warn" mat-icon-button>
+              <button *ngIf="row.isActive" aria-label="Delete contract" color="warn" mat-icon-button>
                 <mat-icon>delete</mat-icon>
               </button>
-              <button *ngIf="!row.isActive && isAdmin" aria-label="Restore contract" color="accent"
+              <button *ngIf="!row.isActive" aria-label="Restore contract" color="accent"
                       mat-icon-button>
                 <mat-icon>restore</mat-icon>
               </button>

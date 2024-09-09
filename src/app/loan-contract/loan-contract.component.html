@@ -13,6 +13,15 @@
       <div class="loan-contract-info-item">
         <strong>Contract ID:</strong> {{ loanContract.id }}
       </div>
+      <div *ngIf="isAdmin" class="loan-contract-info-item">
+        <strong>Client first name:</strong> {{ loanContract.loanOffer.loanApplication.person.firstName }}
+      </div>
+      <div *ngIf="isAdmin" class="loan-contract-info-item">
+        <strong>Client last name:</strong> {{ loanContract.loanOffer.loanApplication.person.lastName }}
+      </div>
+      <div *ngIf="isAdmin" class="loan-contract-info-item">
+        <strong>Client ID code:</strong> {{ loanContract.loanOffer.loanApplication.person.personalIdCode }}
+      </div>
       <div class="loan-contract-info-item">
         <strong>Total Loan Amount:</strong> {{ loanContract.loanOffer.loanAmount }} €
       </div>

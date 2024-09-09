@@ -22,6 +22,11 @@ export class LoanApplicationService {
       + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);
   }
 
+  public getAllLoanApplications(sort: string, order: string, page: number) {
+    return this.httpClient.get<GenResponseList>(this.LOAN_APPLICATION_URL + '?page=' + page + '&items='
+      + environment.itemsPerPage + '&sort=' + sort + '&order=' + order);
+  }
+
   // public updateLoanApplication(LoanApplication: LoanApplication) {
   //   return this.httpClient.put(this.LOAN_APPLICATION_URL, vehicleLoanApplication);
   // }

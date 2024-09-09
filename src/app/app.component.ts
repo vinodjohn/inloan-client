@@ -13,7 +13,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'loan-portal';
-
   role = '';
   isLoggedIn = false;
   personName = '';
@@ -22,6 +21,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private storageService: StorageService, private authService: AuthService,
               private router: Router, private eventBusService: EventBusService, private snackBar: MatSnackBar) {
+  }
+
+  get isAdmin(): boolean {
+    return this.role === 'ADMIN';
   }
 
   ngOnInit(): void {

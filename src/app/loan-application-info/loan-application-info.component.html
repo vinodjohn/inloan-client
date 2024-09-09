@@ -8,6 +8,15 @@
       <div class="loan-application-info-item">
         <strong>Loan application ID:</strong> {{ loanApplication?.id }}
       </div>
+      <div *ngIf="isAdmin" class="loan-application-info-item">
+        <strong>Client first name:</strong> {{ loanApplication?.person.firstName }}
+      </div>
+      <div *ngIf="isAdmin" class="loan-application-info-item">
+        <strong>Client last name:</strong> {{ loanApplication?.person.lastName }}
+      </div>
+      <div *ngIf="isAdmin" class="loan-application-info-item">
+        <strong>Client ID code:</strong> {{ loanApplication?.person.personalIdCode }}
+      </div>
       <div class="loan-application-info-item">
         <strong>Requested loan amount:</strong> {{ loanApplication?.requestAmount }} €
       </div>
@@ -44,7 +53,7 @@
             <td *matCellDef="let row" class="truncate-cell" mat-cell>{{ row.id }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="creditScore">
+          <ng-container matColumnDef="creditScore" *ngIf="isAdmin">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Credit score</th>
             <td *matCellDef="let row"  mat-cell> {{ row.creditScore }}</td>
           </ng-container>
@@ -74,7 +83,7 @@
             <td *matCellDef="let row" mat-cell>{{ row.loanOfferType }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="loanOfferStatus">
+          <ng-container matColumnDef="loanOfferStatus" *ngIf="isAdmin">
             <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>Status</th>
             <td *matCellDef="let row" mat-cell>{{ row.loanOfferStatus }}</td>
           </ng-container>

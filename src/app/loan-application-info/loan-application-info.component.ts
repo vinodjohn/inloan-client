@@ -9,6 +9,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {LoanApplicationService} from "../shared/service/loan-application.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {StorageService} from "../shared/service/storage.service";
 
 @Component({
   selector: 'app-loan-application-info',
@@ -16,23 +17,29 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrl: './loan-application-info.component.css'
 })
 export class LoanApplicationInfoComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'creditScore', 'loanAmount', 'minPeriod', 'maxPeriod', 'createdDate',
-    'loanOfferType', 'loanOfferStatus'];
+  displayedColumns: string[] = ['id', 'loanAmount', 'minPeriod', 'maxPeriod', 'createdDate', 'loanOfferType'];
   loanApplication?: any;
   data: LoanOfferExtended[] = [];
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
   displayPageSize = environment.itemsPerPage;
+  isAdmin = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private route: ActivatedRoute, private loanOfferService: LoanOfferService,
-              private loanApplicationService: LoanApplicationService, private snackBar: MatSnackBar) {
+              private loanApplicationService: LoanApplicationService, private snackBar: MatSnackBar,
+              private storageService: StorageService) {
+    this.isAdmin = this.storageService.isAdmin();
   }
 
   ngAfterViewInit() {
+    if (this.isAdmin) {
+      this.displayedColumns.push('creditScore', 'loanOfferStatus');
+    }
+
     const id = this.route.snapshot.params['id'];
 
     this.loanApplicationService.getLoanApplicationById(id).subscribe({

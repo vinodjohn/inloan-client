@@ -2,11 +2,11 @@
   <span><img alt="" height="81" ngSrc="./assets/inbank-logo.png" priority width="180"></span>
 
   <div class="menu-container">
-    <button class="inter" [routerLink]="['/']" mat-button>Home</button>
-    <button class="inter" [routerLink]="['/loan-application']" mat-button>Loan application</button>
-    <button class="inter" [routerLink]="['/credit-modifier']" mat-button>Credit modifier</button>
-    <button class="inter" [routerLink]="['/kv-store']" mat-button>Key-Value Store</button>
-    <button class="inter" [routerLink]="['/person']" mat-button>Clients</button>
+    <button class="inter" *ngIf="isLoggedIn" [routerLink]="['/']" mat-button>Home</button>
+    <button class="inter" *ngIf="isLoggedIn" [routerLink]="['/loan-application']" mat-button>Loan application</button>
+    <button class="inter" *ngIf="isAdmin" [routerLink]="['/credit-modifier']" mat-button>Credit modifier</button>
+    <button class="inter" *ngIf="isAdmin" [routerLink]="['/kv-store']" mat-button>Key-Value Store</button>
+    <button class="inter" *ngIf="isAdmin" [routerLink]="['/client']" mat-button>Clients</button>
   </div>
   <span class="spacer"></span>
   @if (isLoggedIn) {

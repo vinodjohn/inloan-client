@@ -1,11 +1,11 @@
 <div class="container-xl">
   <div class="jumbotron">
     <div class="container d-flex">
-      <h3 class="jumbotron-heading">My Loan Applications</h3>
-      <button *ngIf="isAdmin" aria-label="Show all applications" class="float-right all-applications" extended mat-fab
-              routerLink="/admin-loan-application">
+      <h3 class="jumbotron-heading">All Loan Applications</h3>
+      <button *ngIf="isAdmin" aria-label="Show my applications" class="float-right my-applications" extended mat-fab
+              routerLink="/loan-application">
         <mat-icon>list_alt</mat-icon>
-        Show all applications
+        Show my applications
       </button>
       <button aria-label="Add new loan" class="float-right" color="primary" mat-fab routerLink="/new-loan">
         <mat-icon>add</mat-icon>
@@ -15,12 +15,12 @@
     <div *ngIf="data.length == 0" class="message-container">
       <mat-card class="message-card">
         <mat-card-content>
-          <p>You do not have any applications.</p>
+          <p>No applications found.</p>
         </mat-card-content>
       </mat-card>
     </div>
 
-    <div [hidden]="data.length == 0" class="application-container mat-elevation-z8">
+    <div [hidden]="data.length == 0 && isAdmin" class="application-container mat-elevation-z8">
       <div *ngIf="isLoadingResults || isRateLimitReached" class="application-loading-shade">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         <div *ngIf="isRateLimitReached" class="application-rate-limit-reached">
@@ -47,10 +47,10 @@
               <button (click)="onRowClicked(row)" aria-label="View application" color="primary" mat-icon-button>
                 <mat-icon>remove_red_eye</mat-icon>
               </button>
-              <button *ngIf="row.isActive && isAdmin" aria-label="Delete application" color="warn" mat-icon-button>
+              <button *ngIf="row.isActive" aria-label="Delete application" color="warn" mat-icon-button>
                 <mat-icon>delete</mat-icon>
               </button>
-              <button *ngIf="!row.isActive && isAdmin" aria-label="Restore application" color="accent"
+              <button *ngIf="!row.isActive" aria-label="Restore application" color="accent"
                       mat-icon-button>
                 <mat-icon>restore</mat-icon>
               </button>

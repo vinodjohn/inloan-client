@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class StorageService {
   private PERSON_KEY = 'auth-person';
+  role = '';
 
   constructor() {
   }
@@ -31,5 +32,10 @@ export class StorageService {
   public isLoggedIn(): boolean {
     const person = window.sessionStorage.getItem(this.PERSON_KEY);
     return !!person;
+  }
+
+  public isAdmin(): boolean {
+    const person = this.getPerson();
+    return person.role === 'ADMIN';
   }
 }

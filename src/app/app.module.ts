@@ -81,6 +81,8 @@ import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {ProfileComponent} from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { AdminLoanApplicationComponent } from './loan-application/admin-loan-application/admin-loan-application.component';
 
 const appRoutes: Routes = [
   {
@@ -108,6 +110,10 @@ const appRoutes: Routes = [
     component: LoanApplicationComponent
   },
   {
+    path: 'admin-loan-application',
+    component: AdminLoanApplicationComponent
+  },
+  {
     path: 'loan-application-info/:id',
     component: LoanApplicationInfoComponent
   },
@@ -120,7 +126,7 @@ const appRoutes: Routes = [
     component: KeyValueStoreComponent
   },
   {
-    path: 'person',
+    path: 'client',
     component: PersonComponent
   },
   {
@@ -130,6 +136,10 @@ const appRoutes: Routes = [
   {
     path: 'change-password',
     component: ChangePasswordComponent
+  },
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent
   }
 ];
 
@@ -158,7 +168,9 @@ const appRoutes: Routes = [
     DeletePersonComponent,
     RestorePersonComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AdminDashboardComponent,
+    AdminLoanApplicationComponent
   ],
   imports: [
     BrowserModule,

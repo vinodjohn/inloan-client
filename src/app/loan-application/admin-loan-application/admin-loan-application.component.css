@@ -1,10 +1,10 @@
-.contract-container {
+.application-container {
   margin-top: 50px;
   position: relative;
   min-height: 200px;
 }
 
-.contract-table-container {
+.application-table-container {
   position: relative;
   max-height: 400px;
   overflow: auto;
@@ -14,7 +14,7 @@ table {
   width: 100%;
 }
 
-.contract-loading-shade {
+.application-loading-shade {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,7 +27,7 @@ table {
   justify-content: center;
 }
 
-.contract-rate-limit-reached {
+.application-rate-limit-reached {
   color: #980000;
   max-width: 360px;
   text-align: center;
@@ -96,6 +96,6 @@ th[mat-header-cell] {
   border-radius: 4px;
 }
 
-.all-contracts {
+.my-applications {
   margin-left: 550px;
 }
