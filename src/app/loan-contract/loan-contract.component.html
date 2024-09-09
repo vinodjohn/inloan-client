@@ -54,7 +54,7 @@
       <div class="loan-contract-info-item">
         <strong>Loan type: {{ loanContract?.loanOffer.loanOfferType }} </strong>
       </div>
-      <div class="loan-contract-info-item">
+      <div class="loan-contract-info-item" *ngIf="isAdmin">
         <strong>Status: <span class="{{ loanContract?.loanOffer.loanOfferStatus }}">
           {{ loanContract?.loanOffer.loanOfferStatus }}</span></strong>
       </div>
