@@ -4,9 +4,10 @@
   <div class="menu-container">
     <button class="inter" *ngIf="isLoggedIn" [routerLink]="['/']" mat-button>Home</button>
     <button class="inter" *ngIf="isLoggedIn" [routerLink]="['/loan-application']" mat-button>Loan application</button>
-    <button class="inter" *ngIf="isAdmin" [routerLink]="['/credit-modifier']" mat-button>Credit modifier</button>
-    <button class="inter" *ngIf="isAdmin" [routerLink]="['/kv-store']" mat-button>Key-Value Store</button>
-    <button class="inter" *ngIf="isAdmin" [routerLink]="['/client']" mat-button>Clients</button>
+    <button class="inter" *ngIf="isLoggedIn && isAdmin" [routerLink]="['/credit-modifier']" mat-button>Credit
+      modifier</button>
+    <button class="inter" *ngIf="isLoggedIn && isAdmin" [routerLink]="['/kv-store']" mat-button>Key-Value Store</button>
+    <button class="inter" *ngIf="isLoggedIn && isAdmin" [routerLink]="['/client']" mat-button>Clients</button>
   </div>
   <span class="spacer"></span>
   @if (isLoggedIn) {
