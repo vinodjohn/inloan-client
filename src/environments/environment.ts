@@ -3,6 +3,6 @@ export const environment = {
   production: true,
   development: false,
   environmentName: 'PROD',
-  baseURL: 'http://3.80.63.202:8080/',
+  baseURL: 'http://localhost:8080/',
   itemsPerPage: 10
 };
