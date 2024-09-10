@@ -67,7 +67,6 @@ export class AdminLoanApplicationComponent implements OnInit, AfterViewInit {
         })
       ).subscribe((data: any) => {
       this.data = data;
-      console.log(this.data);
     });
   }
 

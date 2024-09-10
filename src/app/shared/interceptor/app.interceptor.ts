@@ -30,8 +30,6 @@ export class AppInterceptor implements HttpInterceptor {
       withCredentials: true,
     });
 
-    console.log(modifiedRequest);
-
     return next.handle(modifiedRequest).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse && !request.url.includes('auth/sign-in') && err.status === 401) {

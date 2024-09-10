@@ -37,7 +37,6 @@ export class PersonService {
   }
 
   public changePassword(changePassword: ChangePassword) {
-    console.log(changePassword);
     return this.httpClient.post(this.PERSON_URL.concat('/change-password'), changePassword);
   }
 }

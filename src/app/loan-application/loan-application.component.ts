@@ -56,7 +56,6 @@ export class LoanApplicationComponent implements AfterViewInit {
         })
       ).subscribe((data: any) => {
       this.data = data;
-      console.log(this.data);
     });
   }
 

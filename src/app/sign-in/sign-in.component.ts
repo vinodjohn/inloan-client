@@ -34,7 +34,6 @@ export class SignInComponent implements AfterViewInit {
 
       this.authService.signIn(new SignIn(this.signInForm.get('idCode')?.value, this.signInForm.get('password')?.value)).subscribe({
         next: data => {
-          console.log(data);
           this.storageService.savePerson(data);
           this.loading = false;
           this.isSignInFailed = false;
@@ -66,7 +65,6 @@ export class SignInComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.storageService.isLoggedIn())
     if (this.storageService.isLoggedIn()) {
       this.router.navigate(['']);
     }

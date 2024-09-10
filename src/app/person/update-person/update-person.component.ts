@@ -73,8 +73,6 @@ export class UpdatePersonComponent implements OnInit {
     const person = new Person(this.data.id, firstName, lastName, idCode, this.data.password, role, cm,
       this.data.isActive);
 
-    console.log(person);
-
     this.personService.updatePerson(person).subscribe(() => {
         this.isStepEditable = false;
         this.showSpinner = false;

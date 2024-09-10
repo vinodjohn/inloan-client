@@ -67,8 +67,6 @@ export class NewLoanComponent implements OnInit {
   ngOnInit(): void {
     this.kvStoreService.getKVListForNewLoan().subscribe({
       next: data => {
-        console.log(data);
-
         if (data.length >= 4) {
           this.showForm = true;
 
@@ -110,10 +108,8 @@ export class NewLoanComponent implements OnInit {
     this.loanService.getLoanDecision(this.loanRequest).subscribe({
       next: data => {
         this.loanResponse = data;
-        console.log(this.loanResponse?.loanOfferDtos);
         this.tempLoanOffers = this.loanResponse?.loanOfferDtos === undefined ? []
           : this.getTempLoanOffers(this.loanResponse.loanOfferDtos);
-        console.log(this.tempLoanOffers);
         this.isLoading = false;
       },
       error: () => {

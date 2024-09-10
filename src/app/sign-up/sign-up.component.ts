@@ -42,8 +42,7 @@ export class SignUpComponent implements AfterViewInit {
 
       this.authService.signUp(new SignUp(this.signUpForm.get('firstName')?.value, this.signUpForm.get('lastName')?.value,
         this.signUpForm.get('idCode')?.value, this.signUpForm.get('password')?.value)).subscribe({
-        next: data => {
-          console.log(data);
+        next: () => {
           this.loading = false;
           this.router.navigate(['/sign-in']);
         },
