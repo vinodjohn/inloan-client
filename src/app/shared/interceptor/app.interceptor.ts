@@ -13,7 +13,7 @@ import {AuthService} from "../service/auth.service";
 import {StorageService} from "../service/storage.service";
 import {EventData} from "../model/EventData";
 import {EventBusService} from "../service/event-bus.service";
-import {environment} from "../../../environments/environment.development";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
